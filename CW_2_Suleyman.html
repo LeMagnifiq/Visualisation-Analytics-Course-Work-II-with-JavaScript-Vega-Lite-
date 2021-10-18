@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hhhhhhhhhhhhhh</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+    <h1 id='topheading'>Coursework 2</h1>
+    <h4><strong>Prepared by:</strong> Suleyman Yahaya</h4>
+    <h4><strong>Student ID:</strong> M00736597</h4>
+    <h3>Data Preperation</h3>
+    <p>
+       <h2> Task 2 </h2>
+    </p>
+
+    <div id="fig1"></div>
+    <script type="text/javascript">
+    var fig1Spec = {"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "A Dashboard Showing Collection of Data Over Years Across All Locations",
+  "data":{"url":"https://raw.githubusercontent.com/SuleymanYahaya/IndividualClassProject/main/new.csv"},
+  
+"columns": 1,
+  "concat": [
+    {
+      "width": 600, 
+  "height": 400,
+  "mark":{
+    "type": "line",
+    "tooltip": true,
+    "point": true },
+ 
+"encoding": {
+    "x": {"timeUnit": "year", "field": "sample date",
+      "axis": {"format": "%Y","title":"Year"}},
+
+    "y": {"aggregate": "count", "field": "measure"},
+
+    "color": {"field": "location", "scale": {"scheme": "category20b"}
+}
+     }
+    },
+    
+    {
+      "mark":
+    {"type": "rect", 
+    "tooltip": {"field": "measure"}
+    },
+
+    "width": 600, 
+  "height": 400,
+
+  "encoding": {
+      "y": {"field": "location", "type": "ordinal",
+  "axis":{
+    "title":"Location"}
+    }
+,
+      "x": {"timeUnit": "year", "field": "sample date", "type": "temporal",
+  "axis":{
+    "title":"Years"}},
+      "color": {
+          "field": "value",
+          "type": "quantitative",
+          "aggregate":"count",
+          "title":"Count",
+          "legends": [{
+      "fill": "color",
+      "type": "gradient"}
+          
+      ]
+          }
+      }
+}
+],
+"config": {}
+  }
+  
+
+    vegaEmbed('#fig1', fig1Spec);
+    </script>
+
+ <h2> Task 1 </h2>
+<div id="fig2"></div>
+    <script type="text/javascript">
+    var fig2Spec = {"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+"title": "Trends and Anomalies of Chemical deposits over the Years across all Locations.",
+  "data":{"url":"https://raw.githubusercontent.com/SuleymanYahaya/IndividualClassProject/main/new.csv"},
+  
+"columns": 2,
+  "concat": [
+    
+{
+  "transform": [{
+    "filter": {"field":"measure", "equal": "Biochemical Oxygen"} 
+  }],
+  "width": 450,
+"height": 300,
+
+  "mark": {
+    "type": "line",
+    "point": true,
+    "tooltip": true
+  },
+  "encoding": {
+  "x": {"timeUnit": "year", "field": "sample date", "type": "temporal",
+  "axis":{
+    "title":"Year"
+  }},
+   "y": {
+      "aggregate": "average", "field": "value", "type": "quantitative", 
+      "axis": {
+        "title": "Average Biochemical Oxygen Deposit"
+      }
+    }, "color": {"field": "location", "type": "nominal"}
+}
+},
+{
+   "transform": [{
+    "filter": {"field":"measure", "equal": "Mercury"} 
+  }],
+  "width": 450,
+"height": 300,
+
+ "mark": {
+    "type": "line",
+    "point": true,
+    "tooltip": true
+  },
+  "encoding": {
+  "x": {"timeUnit": "year", "field": "sample date", "type": "temporal",
+  "axis":{
+    "title":"Year"
+  }},
+   "y": {
+      "aggregate": "average", "field": "value", "type": "quantitative", 
+      "axis": {
+        "title": "Average Mercury Deposit"
+      }
+    }, "color": {"field": "location", "type": "nominal"}
+}
+},
+{
+   "transform": [{
+    "filter": {"field":"measure", "equal": "Nickel"} 
+  }],
+  "width": 450,
+"height": 300,
+
+ "mark":{
+    "type": "line",
+    "point": true,
+    "tooltip": true
+  },
+  "encoding": {
+  "x": {"timeUnit": "year", "field": "sample date", "type": "temporal",
+  "axis":{
+    "title":"Year"
+  }},
+   "y": {
+      "aggregate": "average", "field": "value", "type": "quantitative", 
+      "axis": {
+        "title": "Average Nickel Deposit"
+      }
+    }, "color": {"field": "location", "type": "nominal"}
+}
+},
+{
+   "transform": [{
+    "filter": {"field":"measure", "equal": "Arsenic"} 
+  }],
+  "width": 450,
+"height": 300,
+
+"mark":{
+    "type": "line",
+    "point": true,
+    "tooltip": true
+  },
+  "encoding": {
+  "x": {"timeUnit": "year", "field": "sample date", "type": "temporal",
+  "axis":{
+    "title":"Year"
+  }},
+   "y": {
+      "aggregate": "average", "field": "value", "type": "quantitative", 
+      "axis": {
+        "title": "Average Arsenic Deposit"
+      }
+    },"color": {"field": "location", "type": "nominal"}
+}
+}
+  ],
+"config":{}
+}
+
+
+
+
+
+
+
+
+
+ vegaEmbed('#fig2', fig2Spec);
+    </script>
+
+
+
+
+
+   
+
+
+</body>
+</html>
